@@ -17,8 +17,9 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     width: 100%; /* Ocupa el 100% del espacio disponible dentro del padding del body */
     max-width: 420px; /* Limita el ancho máximo del contenedor principal */
-    aspect-ratio: 7 / 12; 
-    display: flex;
+    max-height: 900px;
+    /* aspect-ratio: 7 / 12; */
+    /* display: flex;*/
     flex-direction: column;
     overflow-y: auto; /* Permite el scroll si el contenido es más largo que la altura proporcional */
     -webkit-overflow-scrolling: touch;
