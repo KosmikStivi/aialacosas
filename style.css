@@ -1,0 +1,213 @@
+/* Common styles for the entire app */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; /* Light gray background for the overall page */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenedor de la app */
+    align-items: flex-start; /* Alinea el contenedor de la app a la parte superior, permitiendo scroll */
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* Este padding define el margen constante de los bordes de la pantalla */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+#app-container {
+    background-color: transparent; /* Ahora transparente para que el fondo de la página sea visible */
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ocupa el 100% del espacio disponible dentro del padding del body */
+    max-width: 420px; /* Limita el ancho máximo del contenedor principal */
+    aspect-ratio: 7 / 10; /* Mantiene la relación de aspecto (420px / 600px = 7/10) */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Permite el scroll si el contenido es más largo que la altura proporcional */
+    -webkit-overflow-scrolling: touch;
+    margin: 0 auto; /* Centra el contenedor de la app horizontalmente cuando el max-width se activa */
+    padding: 1.5rem; /* Padding interno para el contenido dentro del contenedor de la app */
+    box-sizing: border-box; /* Asegura que el padding interno se incluya en el width/max-width */
+}
+
+.page {
+    display: none; /* Hidden by default */
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%; /* Asegura que la página ocupe el ancho disponible dentro del #app-container */
+    background-color: transparent; /* Ahora transparente para que el fondo de la imagen sea visible */
+    border-radius: 1rem; /* Mantener los bordes redondeados si la página es visible */
+    /* Aquí se aplicarán los estilos de background-image específicos de cada página */
+    background-size: cover; /* Para que la imagen cubra toda la página */
+    background-position: center; /* Para centrar la imagen */
+    background-repeat: no-repeat; /* Para que no se repita la imagen */
+    background-attachment: local; /* CAMBIO: La imagen se desplaza con el contenido de la página */
+}
+
+.page.active {
+    display: flex;
+}
+
+/* Home Page specific styles */
+#home-page {
+    justify-content: center; /* Centra contenido verticalmente en la página de inicio */
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #3b82f6;
+    color: #ffffff;
+    align-self: center;
+    font-weight: 600;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition-property: background-color, transform;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    width: 70%;
+    margin-top: 1rem;
+    text-decoration: none; /* Para los enlaces */
+    text-align: center; /* Para los enlaces */
+    display: block; /* Para los enlaces */
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #e5e7eb;
+    color: #374151;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition-property: background-color, transform;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    margin-top: 2rem;
+    text-decoration: none; /* Para los enlaces */
+    text-align: center; /* Para los enlaces */
+    display: block; /* Para los enlaces */
+}
+
+.btn-secondary:hover {
+    background-color: #d1d5db;
+    transform: scale(1.05);
+}
+
+.slideshow-nav-btn {
+    background-color: #10b981;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition-property: background-color, transform;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slideshow-nav-btn:hover {
+    background-color: #059669;
+    transform: scale(1.05);
+}
+
+/* Text and layout styles */
+h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    text-align: center; /* Centrar el texto del título */
+}
+
+h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+p {
+    font-size: 1.25rem;
+    color: #374151;
+    margin-bottom: 2rem;
+    text-align: center; /* Centrar el texto del párrafo */
+}
+
+.game-list-buttons, .game-detail-menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.slideshow-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.slide-content {
+    background-color: #f9fafb; /* Color de fondo para el contenido individual de la diapositiva */
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    width: 100%;
+    max-width: 360px;
+}
+
+.slide-text {
+    font-size: 1.125rem;
+    color: #4b5563;
+    line-height: 1.625;
+}
+
+.slideshow-nav-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.slideshow-nav-btn.next {
+    margin-left: auto;
+}
+
+/* Styles for example images */
+.example-image-container {
+    width: 100%;
+    max-width: 250px; /* Max width for the image container */
+    aspect-ratio: 1 / 1; /* Makes the container square */
+    overflow: hidden; /* Hides parts of the image that go outside if not square */
+    border-radius: 0.5rem; /* Slightly rounded corners for the image container */
+    margin: 1rem auto; /* Top/bottom margin, and auto horizontal for centering */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+    display: flex; /* Use flex to center the image if it's smaller */
+    justify-content: center;
+    align-items: center;
+    background-color: #e2e8f0; /* Light background for placeholders */
+}
+
+.example-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the square area */
+    border-radius: 0.5rem; /* Apply border-radius to the image itself */
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reglas de Juegos de Mesa</title>
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Home Page -->
+        <div id="home-page" class="page active" style="background-image: url('imagenes/fondoInicio.png');">
+            <h1>AIALACOSAS</h1>
+            <p>Tu guía interactiva para jugar con tus Aialacartas.</p>
+            <button id="view-games-btn" class="btn-primary">JUEGOS</button>
+        </div>
+
+        <!-- Game List Page -->
+        <div id="game-list-page" class="page" style="background-image: url('imagenes/fondoLista.png');">
+            <h2>Selecciona un Juego</h2>
+            <div id="game-list-buttons" class="game-list-buttons">
+                <!-- Game buttons will be injected here by JavaScript -->
+            </div>
+            <button id="back-to-home-btn" class="btn-secondary">Volver al Inicio</button>
+        </div>
+    </div>
+
+    <script>
+        // Data structure for games (only names and IDs for links)
+        const gamesList = [
+            { id: "catan", name: "Catan" },
+        ];
+
+        // DOM Elements
+        const homePage = document.getElementById('home-page');
+        const gameListPage = document.getElementById('game-list-page');
+        const viewGamesBtn = document.getElementById('view-games-btn');
+        const gameListButtonsContainer = document.getElementById('game-list-buttons');
+        const backToHomeBtn = document.getElementById('back-to-home-btn');
+
+        // Function to show a specific page and hide others within this HTML file
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Render the list of games
+        function renderGameList() {
+            gameListButtonsContainer.innerHTML = ''; // Clear previous buttons
+            gamesList.forEach(game => {
+                const buttonLink = document.createElement('a'); // Use <a> for navigation to new HTML files
+                buttonLink.href = `${game.id}.html`; // Link directly to the game's HTML file in the same root
+                buttonLink.className = 'btn-primary';
+                buttonLink.textContent = game.name;
+                gameListButtonsContainer.appendChild(buttonLink);
+            });
+        }
+
+        // Event Listeners
+        viewGamesBtn.addEventListener('click', () => {
+            renderGameList();
+            showPage('game-list-page');
+        });
+
+        backToHomeBtn.addEventListener('click', () => {
+            showPage('home-page');
+        });
+
+        // Initialize the app on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home-page'); // Start with the home page
+        });
+    </script>
+</body>
+</html>

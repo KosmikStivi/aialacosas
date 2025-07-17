@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catan - Reglas</title>
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Game Detail Page (Game Menu) -->
+        <div id="game-detail-page" class="page active" style="background-image: url('https://placehold.co/420x600/808080/ffffff?text=Catan+Menu');">
+            <h2 id="game-detail-title">Catan</h2>
+            <div id="game-detail-menu-buttons" class="game-detail-menu-buttons">
+                <!-- Game specific menu buttons will be injected here by JavaScript -->
+            </div>
+            <!-- El botón de volver ahora enlaza a la lista de juegos principal (index.html) -->
+            <a href="index.html" class="btn-secondary">Volver a la Lista de Juegos</a>
+        </div>
+
+        <!-- Slideshow Page -->
+        <div id="slideshow-page" class="page" style="background-image: url('https://placehold.co/420x600/a0a0a0/ffffff?text=Catan+Slideshow');">
+            <h2 id="slideshow-title"></h2>
+            <div id="slideshow-content" class="slideshow-content">
+                <!-- Slide content will be injected here by JavaScript -->
+                <div class="slide-content">
+                    <h3 id="slide-current-title"></h3>
+                    <div id="slide-current-image-container" class="example-image-container" style="display:none;">
+                        <img id="slide-current-image" class="example-image" alt="Imagen de ejemplo">
+                    </div>
+                    <p id="slide-current-text"></p>
+                </div>
+            </div>
+            <div class="slideshow-nav-container">
+                <button id="slideshow-prev-btn" class="slideshow-nav-btn" style="display: none;">Anterior</button>
+                <button id="slideshow-next-btn" class="slideshow-nav-btn next" style="display: none;">Siguiente</button>
+            </div>
+            <button id="back-from-slideshow-btn" class="btn-secondary">Volver al Menú Anterior</button>
+        </div>
+    </div>
+
+
+    <script>
+        // Data structure for THIS game (Catan) and its content
+        // Se adjunta a 'window' para que sea globalmente accesible por script.js
+        window.gameData = {
+            id: "catan",
+            name: "Catan",
+            menu: [
+                { id: "catan-rules", label: "Reglas Básicas" },
+                { id: "catan-expansions", label: "Expansiones" },
+                { id: "catan-faq", label: "Preguntas Frecuentes" },
+                { id: "catan-examples", label: "Ejemplos de Juego" }
+            ],
+            content: {
+                "catan-rules": [
+                    { title: "Objetivo del Juego", text: "El objetivo en Catan es ser el primer jugador en alcanzar 10 puntos de victoria, construyendo asentamientos, ciudades y carreteras, y desarrollando tu economía." },
+                    { title: "Preparación del Tablero", text: "Coloca el tablero hexagonal con losetas de terreno, números y puertos. Cada jugador elige un color y recibe sus piezas iniciales: asentamientos, ciudades y carreteras." },
+                    { title: "Turno de Juego", text: "Un turno se compone de tres fases: 1. Lanzar los dados para determinar la producción de recursos. 2. Comerciar recursos con otros jugadores o con el banco. 3. Construir nuevas piezas o comprar cartas de desarrollo." },
+                    { title: "Construcción y Puntos", text: "Construye carreteras para conectar tus asentamientos, asentamientos para recolectar recursos, y mejora asentamientos a ciudades para obtener más recursos y puntos. Las cartas de desarrollo ofrecen ventajas y puntos de victoria adicionales." },
+                    { title: "El Ladrón", text: "Si se lanza un '7', el ladrón se mueve. El jugador que lo mueve roba una carta de recurso de un jugador adyacente a la loseta donde se coloca el ladrón, y esa loseta no produce recursos hasta que el ladrón se mueva de nuevo." }
+                ],
+                "catan-expansions": [
+                    { title: "Navegantes de Catan", text: "Introduce barcos y nuevas islas para explorar. Permite la creación de escenarios con mapas variables y objetivos de victoria basados en la exploración y el comercio marítimo." },
+                    { title: "Ciudades y Caballeros", text: "Añade caballeros para defender Catan de los bárbaros, metrópolis para obtener más puntos y productos básicos. Introduce nuevas formas de desarrollo y defensa, haciendo el juego más estratégico." },
+                    { title: "Mercaderes y Bárbaros", text: "Ofrece una colección de escenarios y variantes que añaden complejidad y nuevas mecánicas, como la pesca, los ríos de Catan, y la posibilidad de transportar bienes con carretas." }
+                ],
+                "catan-faq": [
+                    { title: "¿Cómo se gana el juego?", text: "El primer jugador en alcanzar 10 puntos de victoria, visibles o en cartas de desarrollo, gana la partida." },
+                    { title: "¿Se puede construir en el turno de otro jugador?", text: "No, las acciones de construcción y compra de cartas de desarrollo solo se pueden realizar durante tu propio turno. El comercio sí puede hacerse en el turno de otro." },
+                    { title: "¿Qué pasa si un jugador tiene más de 7 cartas y sale un 7?", text: "Si se lanza un '7' en los dados y un jugador tiene más de 7 cartas de recurso en su mano, debe descartar la mitad de sus cartas (redondeando hacia abajo) antes de que el ladrón se mueva." }
+                ],
+                "catan-examples": [ // Nuevo contenido para ejemplos
+                    {
+                        title: "Construcción de Asentamiento",
+                        text: "Un asentamiento debe construirse en la intersección de tres losetas y dos caminos, y no puede estar adyacente a otro asentamiento.",
+                        imageUrl: "https://placehold.co/250x250/aabbcc/ffffff?text=Asentamiento"
+                    },
+                    {
+                        title: "Comercio con el Banco",
+                        text: "Puedes intercambiar 4 cartas de un mismo recurso por 1 carta de cualquier otro recurso con el banco. Si tienes un puerto, la proporción puede ser mejor.",
+                        imageUrl: "https://placehold.co/250x250/ccbbdd/ffffff?text=Comercio+4:1"
+                    },
+                    {
+                        title: "Movimiento del Ladrón",
+                        text: "El ladrón se mueve a una loseta cuando se saca un '7'. Robas una carta de recurso de un jugador con un asentamiento o ciudad en esa loseta.",
+                        imageUrl: "https://placehold.co/250x250/ddeeff/ffffff?text=Ladrón+en+Acción"
+                    },
+                    {
+                        title: "Carretera más Larga",
+                        text: "El jugador con la carretera continua más larga (al menos 5 segmentos) obtiene 2 puntos de victoria adicionales. Esta carta puede cambiar de dueño.",
+                        imageUrl: "https://placehold.co/250x250/eeccaa/ffffff?text=Carretera+Larga"
+                    }
+                ]
+            }
+        };
+    </script>
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
